@@ -3,15 +3,16 @@ const initState = {};
 const mainReducer = (state = initState, action) => {
   let newState = state;
   switch (action.type) {
-    case "HELLO":
+    case "FETCH_ALL_THERAPISTS":
       newState = {
         ...state,
-        hello: "hello",
+        allTherapists: action.data,
       };
       break;
     default:
       return state;
   }
+  return newState;
 };
 
 export default mainReducer;

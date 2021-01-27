@@ -33,3 +33,12 @@ export const fetchSingleTherapistData = (id) => {
       });
   };
 };
+
+export const saveEditedTherapistInfo = (fullName, aboutMe) => {
+  let editedData = { fullName, aboutMe };
+  return () => ({ type: "SAVE_EDITED_THERAPIST_INFO", data: editedData });
+};
+
+export const deleteTherapistData = (id) => {
+  return () => ({ type: "DELETE_THERAPIST_DATA", data: id });
+};

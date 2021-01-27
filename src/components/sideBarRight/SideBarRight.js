@@ -4,7 +4,7 @@ import { CustomInput } from "../customInput/CustomInput";
 import { CustomTextArea } from "../customTextArea/CustomTextArea";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleTherapistData } from "../../actions/mainActions";
+import { fetchSingleTherapistData, saveEditedTherapistInfo } from "../../actions/mainActions";
 import CustomButton from "../customButton/CustomButton";
 import closeButton from "../../assets/images/close_24px.svg";
 
@@ -24,6 +24,15 @@ export default function SideBarRight({ therapistId, setToggleAppOverlay }) {
         setAboutMe(singleTherapist.aboutMe)
       }
   }, [dispatch, singleTherapist]);
+
+  const saveTherapistData = (fullName, aboutMe) => (
+    setIsEdited((prevState) => !prevState),
+    dispatch(saveEditedTherapistInfo(fullName, aboutMe)),
+    alert("react.toastify... 'Zapisano Dane' :)")
+
+  )
+
+  
 
   return (
     <div className="sideBarRight">
@@ -126,7 +135,7 @@ export default function SideBarRight({ therapistId, setToggleAppOverlay }) {
                   <CustomButton
                     role="confirmButton"
                     title="Zapisz"
-                    onClick={() => setIsEdited((prevState) => !prevState)}
+                    onClick={() => saveTherapistData(fullName, aboutMe)}
                   ></CustomButton>
                   <CustomButton
                     role="withBorder"

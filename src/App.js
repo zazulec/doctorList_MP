@@ -8,7 +8,7 @@ import AppOverlay from "./components/layouts/AppOverlay";
 import SideBarRight from "./components/sideBarRight/SideBarRight";
 
 function App() {
-  const [toggleAppOverlay, setToggleAppOverlay] = useState(false);
+  const [toggleAppOverlay, setToggleAppOverlay] = useState(true);
   const allTherapist = useSelector((state) => state.main.allTherapists);
   const dispatch = useDispatch();
 

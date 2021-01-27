@@ -1,6 +1,6 @@
 import React from "react";
 import "../../scss/layouts/appLayouts.scss";
-import tpLogo from "../../assets/logo/TP.png";
+import tpLogo from "../../assets/logo/TP.svg";
 
 export default function AppLayout({ children }) {
   return (

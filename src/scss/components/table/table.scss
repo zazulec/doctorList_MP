@@ -1,6 +1,81 @@
-@import "../styles";
+@import "../../styles";
 
 .tableComponent {
   background-color: $backgroundColor;
-  width: 80px;
+  .tableComponent_wrapper {
+    padding: 32px 32px 0 32px;
+    .tableComponent_header {
+      width: 1296px;
+      height: 56px;
+      display: flex;
+      flex-direction: row;
+      border: 1px $tableBorderColor solid;
+      &--specialist {
+        width: 325px;
+        height: 56px;
+        border: 1px $tableBorderColor solid;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.1px;
+      }
+      &--specialization {
+        width: 950px;
+        height: 56px;
+        border: 1px $tableBorderColor solid;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.1px;
+      }
+    }
+    .table {
+      background-color: $white;
+      display: flex;
+      flex-direction: row;
+      &_info {
+        display: flex;
+        flex-direction: row;
+        width: 325px;
+        height: 56px;
+        border: 1px $tableBorderColor solid;
+        &--avatar {
+          padding: 12px 0 12px 25px;
+          & img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+          }
+        }
+        &--name {
+          padding: 17px 0 17px 24px;
+          font-family: Inter;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 22px;
+          letter-spacing: 0.1px;
+        }
+        &--specializations {
+          width: 950px;
+          height: 56px;
+          border: 1px $tableBorderColor solid;
+          &:hover {
+            cursor: pointer;
+          }
+          & span {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+  }
 }

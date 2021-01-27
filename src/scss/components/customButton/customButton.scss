@@ -1,0 +1,50 @@
+@import "../../styles";
+
+.confirmButton {
+  flex-direction: row;
+  padding: 12px 24px;
+  width: 95px;
+  height: 42px;
+  left: 1039px;
+  top: 571px;
+  background: $primary;
+  border-radius: 8px;
+  border: none;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  color: $white;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 10px 0px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.errorButton {
+  @extend .confirmButton;
+  background: $error;
+}
+
+.withBorder {
+  @extend .confirmButton;
+  background-color: $white;
+  box-shadow: -4px 4px 24px rgba(0, 0, 0, 0.18);
+  color: $primary;
+  border-color: $primary;
+  border: 1px solid;
+}
+
+.withBorderError {
+  @extend .withBorder;
+  border-color: $error;
+  color: $error;
+}

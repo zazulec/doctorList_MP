@@ -7,9 +7,83 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: left;
   z-index: 51;
   background-color: $white;
-  height: 892px;
+  min-height: 100%;
   width: 433px;
   top: 0px;
+
+  &_closeButton {
+    cursor: pointer;
+    position: absolute;
+    background-color: transparent;
+    top: 10px;
+    right: 45px;
+    border: none;
+    display: flex;
+    justify-content: left;
+    width: 13px;
+    height: 13px;
+    border: 0;
+    padding: 0;
+    color: $closeButtonColor;
+  }
+  &_contentWrapper {
+    padding: 0 32px 32px 32px;
+    & h5 {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: 0.2px;
+    }
+    &--label {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      color: $inputLabel;
+    }
+    &--info {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.1px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.1px;
+      overflow-wrap: normal;
+      flex-wrap: wrap;
+      & ul {
+        padding: 0;
+        margin: 0;
+      }
+      & ul > li {
+        list-style-type: none;
+        padding-bottom: 5px;
+      }
+
+      &--specializations {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.1px;
+      }
+    }
+    &--buttonsContainer {
+      & :first-child {
+        margin-right: 20px;
+      }
+    }
+  }
 }

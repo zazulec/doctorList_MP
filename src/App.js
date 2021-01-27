@@ -17,7 +17,13 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      {!toggleAppOverlay ? null : <AppOverlay><SideBarRight></SideBarRight></AppOverlay>}
+      {!toggleAppOverlay ? null : (
+        <AppOverlay>
+          <SideBarRight
+            setToggleAppOverlay={setToggleAppOverlay}
+          ></SideBarRight>
+        </AppOverlay>
+      )}
       <AppLayout>
         {allTherapist === null ? (
           <div

@@ -1,5 +1,6 @@
 const initState = {
   allTherapists: null,
+  singleTherapist: null
 };
 
 const mainReducer = (state = initState, action) => {
@@ -14,6 +15,12 @@ const mainReducer = (state = initState, action) => {
       newState = {
         ...state,
         allTherapists: chunkArray(array, 9),
+      };
+      break;
+    case "FETCH_SINGLE_THERAPIST":
+      newState = {
+        ...state,
+        singleTherapist: action.data,
       };
       break;
     default:

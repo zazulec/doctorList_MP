@@ -7,7 +7,7 @@ export default function TableComponent() {
   const currentTherapistView = useSelector(
     (state) => state.main && state.main.allTherapists[currentSite]
   );
-  console.log(currentTherapistView)
+  console.log(currentTherapistView);
   return (
     <div className="tableComponent">
       <table className="table_header">
@@ -24,10 +24,20 @@ export default function TableComponent() {
                   <p>{e.fullName}</p>
                 </td>
                 <td className="table_therapist--specializations">
-                    {e.specjalizations}
-                  {/* {e.specializations.length > 3
-                    ? (e[0], e[1], e[2] + "...")
-                    : e.map((specjalization) => <span>{specjalization}</span>)} */}
+                  {/*                       
+                      {singleTherapist && singleTherapist.specializations.length > 3 ? (
+                    <>
+                      <span>{singleTherapist.specializations[0]}</span>
+                      <span>{singleTherapist.specializations[1]}</span>
+                      <span>{singleTherapist.specializations[2]}</span>
+                      {`${"..."}`}
+                    </>
+                  ) : (
+                    singleTherapist.specializations.map(
+                      (e) => e.specializations
+                    )
+                  )}
+                   */}
                 </td>
               </tr>
             );

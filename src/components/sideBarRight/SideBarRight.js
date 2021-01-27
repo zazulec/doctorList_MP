@@ -11,14 +11,19 @@ import closeButton from "../../assets/images/close_24px.svg";
 export default function SideBarRight({ therapistId, setToggleAppOverlay }) {
   const singleTherapist = useSelector((state) => state.main.singleTherapist);
   const dispatch = useDispatch();
-
-  const [fullName, setFullName] = useState(singleTherapist.fullName);
-  const [aboutMe, setAboutMe] = useState(singleTherapist.aboutMe);
+  const [fullName, setFullName] = useState(null);
+  const [aboutMe, setAboutMe] = useState(null);
   const [isEdited, setIsEdited] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchSingleTherapistData());
-  }, [dispatch]);
+    if (singleTherapist === null) {
+      dispatch(fetchSingleTherapistData());
+    }
+    if (singleTherapist !== null) {
+        setFullName(singleTherapist.fullName)
+        setAboutMe(singleTherapist.aboutMe)
+      }
+  }, [dispatch, singleTherapist]);
 
   return (
     <div className="sideBarRight">

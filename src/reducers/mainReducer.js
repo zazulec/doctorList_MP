@@ -1,20 +1,19 @@
 const initState = {
-    allTherapists: []
+  allTherapists: null,
 };
 
 const mainReducer = (state = initState, action) => {
   let newState = state;
   switch (action.type) {
     case "FETCH_ALL_THERAPISTS":
-      let chunk;
-      let sortedData = [];
-      while (action.data.length > 0) {
-        chunk = action.data.splice(0, 9);
-        sortedData.push(chunk);
-      }
+      let array = action.data;
+      const chunkArray = (arr, size) =>
+        arr.length > size
+          ? [arr.slice(0, size), ...chunkArray(arr.slice(size), size)]
+          : [arr];
       newState = {
         ...state,
-        allTherapists: sortedData,
+        allTherapists: chunkArray(array, 9),
       };
       break;
     default:

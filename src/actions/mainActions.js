@@ -40,5 +40,5 @@ export const saveEditedTherapistInfo = (fullName, aboutMe) => {
 };
 
 export const deleteTherapistData = (id) => {
-  return () => ({ type: "DELETE_THERAPIST_DATA", data: id });
+  return (dispatch) => dispatch({ type: "DELETE_THERAPIST_DATA", data: id });
 };

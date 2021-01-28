@@ -44,6 +44,7 @@ export default function SideBarRight({
   const deleteSingleTherapist = () => {
     return (
       setToggleAppOverlay(true), 
+      setToggleSideBarRight(false),
       setToggleMainModal(true)
     );
   };

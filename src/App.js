@@ -18,17 +18,19 @@ function App() {
   useEffect(() => {
     dispatch(fetchTherapistsData());
   }, [dispatch]);
+  
   return (
     <>
       {toggleAppOverlay === false ? null : (
         <AppOverlay>
           {toggleMainModal === false ? null : (
-            <MainModal setToggleMainModal={setToggleMainModal} />
+            <MainModal setToggleMainModal={setToggleMainModal} setToggleSideBarRight={setToggleSideBarRight} setToggleAppOverlay={setToggleAppOverlay}/>
           )}
           {toggleSideBarRight === false ? null : (
             <SideBarRight
               setToggleAppOverlay={setToggleAppOverlay}
               setToggleMainModal={setToggleMainModal}
+              setToggleSideBarRight={setToggleSideBarRight}
             ></SideBarRight>
           )}
         </AppOverlay>

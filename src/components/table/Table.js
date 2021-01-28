@@ -5,7 +5,10 @@ import Pagination from "@material-ui/lab/Pagination";
 
 import { useSelector } from "react-redux";
 
-export default function TableComponent() {
+export default function TableComponent({
+  setToggleSideBarRight,
+  setToggleAppOverlay,
+}) {
   const [pageIndex, setPageIndex] = useState(7);
   const currentTherapistView = useSelector((state) => {
     const startIndex = pageIndex * 10;
@@ -15,8 +18,8 @@ export default function TableComponent() {
       state.main.allTherapists.slice(startIndex, endIndex)
     );
   });
-  const numberOfPage = useSelector(
-    (state) => Math.floor(state.main.allTherapists && state.main.allTherapists.length /10)
+  const numberOfPage = useSelector((state) =>
+    Math.floor(state.main.allTherapists && state.main.allTherapists.length / 10)
   );
 
   const getSpecializationsView = (specializations) => {
@@ -33,13 +36,44 @@ export default function TableComponent() {
             ))
           : specializations.map((e, index) => (
               <Fragment key={index}>
-                <span >{e}</span>
+                <span>{e}</span>
                 {index !== specializations.length - 1 ? ", " : ""}
               </Fragment>
             ))}
         {dots}
       </Fragment>
     );
+  };
+
+  //   const getSpecializationsView =  useCallback(
+  //     (specializations) => {
+  //        const isExtended = specializations.length >= 3;
+  //        const dots = isExtended ? <span>...</span> : null;
+  //        return (
+  //          <Fragment>
+  //            {isExtended === true
+  //              ? specializations.slice(0, 3).map((e, index) => (
+  //                  <Fragment key={index}>
+  //                    <span>{e}</span>
+  //                    {index !== specializations.length - 1 ? ", " : ""}
+  //                  </Fragment>
+  //                ))
+  //              : specializations.map((e, index) => (
+  //                  <Fragment key={index}>
+  //                    <span >{e}</span>
+  //                    {index !== specializations.length - 1 ? ", " : ""}
+  //                  </Fragment>
+  //                ))}
+  //            {dots}
+  //          </Fragment>
+  //        );
+  //      }
+  //    ),
+  //    [input],
+  //  )
+  const openSideBarRight = () => {
+    setToggleAppOverlay(true);
+    setToggleSideBarRight(true);
   };
 
   return (
@@ -63,21 +97,30 @@ export default function TableComponent() {
               <Tooltip
                 title={e.specializations.map((e, index) => (
                   <Fragment key={index}>
-                    <span >{e}</span>
+                    <span>{e}</span>
                     {index ? ", " : ""}
                   </Fragment>
                 ))}
                 arrow
                 placement="top"
               >
-                <div className="table_info--specializations">
+                <div
+                  className="table_info--specializations"
+                  onClick={() => openSideBarRight()}
+                >
                   {getSpecializationsView(e.specializations)}
                 </div>
               </Tooltip>
             </div>
           );
         })}
-        <Pagination count={numberOfPage}  page={pageIndex +1} onChange={() => setPageIndex()} variant="outlined" shape="rounded" />
+        <Pagination
+          count={numberOfPage}
+          page={pageIndex + 1}
+          onChange={() => setPageIndex()}
+          variant="outlined"
+          shape="rounded"
+        />
       </div>
     </div>
   );

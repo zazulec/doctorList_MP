@@ -20,26 +20,18 @@ export default function SideBarRight({
 }) {
   const singleTherapist = useSelector((state) => state.main.singleTherapist);
   const dispatch = useDispatch();
-  const [fullName, setFullName] = useState(
-    singleTherapist && singleTherapist.fullName
-  );
-  const [aboutMe, setAboutMe] = useState(
-    singleTherapist && singleTherapist.aboutMe
-  );
+  const [fullName, setFullName] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
   const [isEdited, setIsEdited] = useState(true);
 
   useEffect(() => {
     if (singleTherapist === null) {
       dispatch(fetchSingleTherapistData(singleTherapistId));
     }
-    // if (singleTherapistBackend !== null && fullName === "") {
-    //   setFullName(singleTherapistBackend.fullName);
-    //   setAboutMe(singleTherapistBackend.aboutMe);
-    // } else {
-    //   setFullName(fullName);
-    //   setAboutMe(aboutMe);
-    // }
-
+    if (singleTherapist !== null) {
+      setFullName(singleTherapist.fullName);
+      setAboutMe(singleTherapist.aboutMe);
+    }
     return () => {
       if (singleTherapist !== null) {
         dispatch(eraseTherapistInfo());
@@ -51,8 +43,6 @@ export default function SideBarRight({
     return (
       setIsEdited((prevState) => !prevState),
       dispatch(saveEditedTherapistInfo(fullName, aboutMe, singleTherapistId)),
-      setToggleAppOverlay(false),
-      setToggleSideBarRight(false),
       alert("react.toastify... 'Zapisano Dane' :)")
     );
   };
@@ -87,7 +77,7 @@ export default function SideBarRight({
                     Imię i nazwisko
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
-                    {singleTherapist.fullName}
+                    {fullName}
                   </span>
                 </p>
                 <p>
@@ -141,7 +131,7 @@ export default function SideBarRight({
                     O mnie
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
-                    {singleTherapist.aboutMe}
+                    {aboutMe}
                   </span>
                 </p>
                 <div className="sideBarRight_contentWrapper--buttonsContainer">
@@ -162,12 +152,12 @@ export default function SideBarRight({
                 <h5>Edytuj informacje o specjaliście</h5>
                 <CustomInput
                   labelText="Imię i nazwisko"
-                  data={singleTherapist.fullName}
+                  data={fullName}
                   handleInput={handleInput}
                 />
                 <CustomTextArea
                   labelText="O mnie"
-                  data={singleTherapist.aboutMe}
+                  data={aboutMe}
                   handleTextArea={handleTextArea}
                 />
                 <div className="sideBarRight_buttonsContainer">

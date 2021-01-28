@@ -1,7 +1,6 @@
 const initState = {
   allTherapists: null,
-  // singleTherapist: null
-  singleTherapist: { specializations: [], therapyTypes: [], certificates: [] },
+  singleTherapist: null,
 };
 
 const mainReducer = (state = initState, action) => {
@@ -28,7 +27,7 @@ const mainReducer = (state = initState, action) => {
       break;
     case "DELETE_THERAPIST_DATA":
       const findTherapistDataToRemove = state.allTherapists.findIndex(
-        (e) => e.id === action.data
+        (e) => e.therapistId === action.data
       );
       function deleteDataInArrayWhenFindIndexInAllTherapist() {
         if (findTherapistDataToRemove !== -1) {
@@ -36,18 +35,20 @@ const mainReducer = (state = initState, action) => {
           newAllTherapists.splice(findTherapistDataToRemove, 1);
           return newAllTherapists;
         } else {
-          return state.filteredAndSortedItems;
+          return state.allTherapists;
         }
       }
       const newAllItemsData = deleteDataInArrayWhenFindIndexInAllTherapist();
       newState = {
         ...state,
-        filteredAndSortedItems: newAllItemsData,
+        allTherapists: newAllItemsData,
       };
-      // newState = {
-      //   ...state,
-      //   singleTherapist: action.data,
-      // };
+      break;
+    case "ERASE_THERAPIST_INFO":
+      newState = {
+        ...state,
+        singleTherapist: null,
+      };
       break;
     default:
       return state;

@@ -43,6 +43,7 @@
         width: 325px;
         height: 56px;
         border: 1px $tableBorderColor solid;
+        overflow-y: scroll;
         &--avatar {
           padding: 12px 0 12px 25px;
           & img {
@@ -64,9 +65,7 @@
           width: 950px;
           height: 56px;
           border: 1px $tableBorderColor solid;
-          &:hover {
-            cursor: pointer;
-          }
+          cursor: pointer;
           & span {
             font-family: Inter;
             font-style: normal;

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 export default function TableComponent({
   setToggleSideBarRight,
   setToggleAppOverlay,
+  setSingleTherapistId
 }) {
   const [pageIndex, setPageIndex] = useState(7);
   const currentTherapistView = useSelector((state) => {
@@ -26,7 +27,7 @@ export default function TableComponent({
     const isExtended = specializations.length >= 3;
     const dots = isExtended ? <span>...</span> : null;
     return (
-      <Fragment>
+      <>
         {isExtended === true
           ? specializations.slice(0, 3).map((e, index) => (
               <Fragment key={index}>
@@ -41,7 +42,7 @@ export default function TableComponent({
               </Fragment>
             ))}
         {dots}
-      </Fragment>
+      </>
     );
   };
 
@@ -71,7 +72,8 @@ export default function TableComponent({
   //    ),
   //    [input],
   //  )
-  const openSideBarRight = () => {
+  const openSideBarRight = (therapistId) => {
+    setSingleTherapistId(therapistId)
     setToggleAppOverlay(true);
     setToggleSideBarRight(true);
   };
@@ -104,10 +106,7 @@ export default function TableComponent({
                 arrow
                 placement="top"
               >
-                <div
-                  className="table_info--specializations"
-                  onClick={() => openSideBarRight()}
-                >
+                <div className="table_info--specializations" onClick={() => openSideBarRight(e.therapistId)}>
                   {getSpecializationsView(e.specializations)}
                 </div>
               </Tooltip>

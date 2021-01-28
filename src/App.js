@@ -12,25 +12,32 @@ function App() {
   const [toggleAppOverlay, setToggleAppOverlay] = useState(false);
   const [toggleSideBarRight, setToggleSideBarRight] = useState(false);
   const [toggleMainModal, setToggleMainModal] = useState(false);
+  const [singleTherapistId, setSingleTherapistId] = useState("");
   const allTherapist = useSelector((state) => state.main.allTherapists);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTherapistsData());
   }, [dispatch]);
-  
+
   return (
     <>
       {toggleAppOverlay === false ? null : (
         <AppOverlay>
           {toggleMainModal === false ? null : (
-            <MainModal setToggleMainModal={setToggleMainModal} setToggleSideBarRight={setToggleSideBarRight} setToggleAppOverlay={setToggleAppOverlay}/>
+            <MainModal
+              setToggleMainModal={setToggleMainModal}
+              setToggleSideBarRight={setToggleSideBarRight}
+              setToggleAppOverlay={setToggleAppOverlay}
+              singleTherapistId={singleTherapistId}
+            />
           )}
           {toggleSideBarRight === false ? null : (
             <SideBarRight
               setToggleAppOverlay={setToggleAppOverlay}
               setToggleMainModal={setToggleMainModal}
               setToggleSideBarRight={setToggleSideBarRight}
+              singleTherapistId={singleTherapistId}
             ></SideBarRight>
           )}
         </AppOverlay>
@@ -49,6 +56,7 @@ function App() {
           <TableComponent
             setToggleSideBarRight={setToggleSideBarRight}
             setToggleAppOverlay={setToggleAppOverlay}
+            setSingleTherapistId={setSingleTherapistId}
           />
         )}
       </AppLayout>

@@ -5,6 +5,7 @@ import { CustomTextArea } from "../customTextArea/CustomTextArea";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
+  eraseTherapistInfo,
   fetchSingleTherapistData,
   saveEditedTherapistInfo,
 } from "../../actions/mainActions";
@@ -12,10 +13,10 @@ import CustomButton from "../customButton/CustomButton";
 import closeButton from "../../assets/images/close_24px.svg";
 
 export default function SideBarRight({
-  therapistId,
   setToggleAppOverlay,
   setToggleMainModal,
-  setToggleSideBarRight
+  setToggleSideBarRight,
+  singleTherapistId,
 }) {
   const singleTherapist = useSelector((state) => state.main.singleTherapist);
   const dispatch = useDispatch();
@@ -25,12 +26,17 @@ export default function SideBarRight({
 
   useEffect(() => {
     if (singleTherapist === null) {
-      dispatch(fetchSingleTherapistData());
+      dispatch(fetchSingleTherapistData(singleTherapistId));
     }
     if (singleTherapist !== null) {
       setFullName(singleTherapist.fullName);
       setAboutMe(singleTherapist.aboutMe);
     }
+    return () => {
+      if (singleTherapist !== null) {
+        dispatch(eraseTherapistInfo());
+      }
+    };
   }, [dispatch, singleTherapist]);
 
   const saveTherapistData = (fullName, aboutMe) => {
@@ -43,7 +49,7 @@ export default function SideBarRight({
 
   const deleteSingleTherapist = () => {
     return (
-      setToggleAppOverlay(true), 
+      setToggleAppOverlay(true),
       setToggleSideBarRight(false),
       setToggleMainModal(true)
     );

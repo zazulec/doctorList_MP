@@ -11,7 +11,7 @@ export default function AppLayout({ children }) {
       <div className="appLayout_leftBar">
         <img src={tpLogo} alt="tpLogo"></img>
       </div>
-      <div style={{ marginLeft: "81px", backgroundColor: "#E5E5E5", height: "100vh"}}>{children}</div>
+      <div style={{ marginLeft: "81px", backgroundColor: "#E5E5E5", height: "100%"}}>{children}</div>
     </div>
   );
 }

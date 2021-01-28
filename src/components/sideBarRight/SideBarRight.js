@@ -77,7 +77,7 @@ export default function SideBarRight({
                     Imię i nazwisko
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
-                    {fullName}
+                    {fullName || "Brak danych"}
                   </span>
                 </p>
                 <p>
@@ -85,16 +85,18 @@ export default function SideBarRight({
                     Specjalizacje
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
-                    {singleTherapist.specializations.map((e, index) => (
-                      <span
-                        key={index}
-                        className="sideBarRight_contentWrapper--info--specializations"
-                      >{`${e} ${
-                        index < singleTherapist.specializations.length - 1
-                          ? ",\u00A0"
-                          : ""
-                      }`}</span>
-                    ))}
+                    {singleTherapist.specializations.length !== 0
+                      ? singleTherapist.specializations.map((e, index) => (
+                          <span
+                            key={index}
+                            className="sideBarRight_contentWrapper--info--specializations"
+                          >{`${e} ${
+                            index < singleTherapist.specializations.length - 1
+                              ? ",\u00A0"
+                              : ""
+                          }`}</span>
+                        ))
+                      : "Brak danych"}
                   </span>
                 </p>
                 <p>
@@ -102,36 +104,40 @@ export default function SideBarRight({
                     Rodzaje terapii
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
-                    {singleTherapist.therapyTypes.map((e, index) => (
-                      <span
-                        key={index}
-                        className="sideBarRight_info--specializations"
-                      >{`${e} ${
-                        index < singleTherapist.therapyTypes.length - 1
-                          ? ",\u00A0"
-                          : ""
-                      }`}</span>
-                    ))}
+                    {singleTherapist.therapyTypes.length !== 0
+                      ? singleTherapist.therapyTypes.map((e, index) => (
+                          <span
+                            key={index}
+                            className="sideBarRight_info--specializations"
+                          >{`${e} ${
+                            index < singleTherapist.therapyTypes.length - 1
+                              ? ",\u00A0"
+                              : ""
+                          }`}</span>
+                        ))
+                      : "Brak danych"}
                   </span>
                 </p>
-                <p>
+                <article>
                   <label className="sideBarRight_contentWrapper--label">
                     Rodzaje Certyfikatów
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
                     <ul>
-                      {singleTherapist.certificates.map((e, index) => (
-                        <li key={index}>{e.name}</li>
-                      ))}
+                      {singleTherapist.certificates.length !== 0
+                        ? singleTherapist.certificates.map((e, index) => (
+                            <li key={index}>{e.name}</li>
+                          ))
+                        : "Brak danych"}
                     </ul>
                   </span>
-                </p>
+                </article>
                 <p>
                   <label className="sideBarRight_contentWrapper--label">
                     O mnie
                   </label>
                   <span className="sideBarRight_contentWrapper--info">
-                    {aboutMe}
+                    {aboutMe || "Brak danych"}
                   </span>
                 </p>
                 <div className="sideBarRight_contentWrapper--buttonsContainer">
@@ -152,12 +158,12 @@ export default function SideBarRight({
                 <h5>Edytuj informacje o specjaliście</h5>
                 <CustomInput
                   labelText="Imię i nazwisko"
-                  data={fullName}
+                  data={fullName || "Brak danych"}
                   handleInput={handleInput}
                 />
                 <CustomTextArea
                   labelText="O mnie"
-                  data={aboutMe}
+                  data={aboutMe || "Brak danych"}
                   handleTextArea={handleTextArea}
                 />
                 <div className="sideBarRight_buttonsContainer">

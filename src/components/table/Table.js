@@ -29,11 +29,11 @@ export default function TableComponent({
     return (
       <>
         {specializations.slice(0, 3).map((e, index) => (
-              <Fragment key={index}>
-                <span>{e}</span>
-                {index < 2 ? ", " : ""}
-              </Fragment>
-            ))}
+          <Fragment key={index}>
+            <span>{e}</span>
+            {index < 2 ? ", " : ""}
+          </Fragment>
+        ))}
         {dots}
       </>
     );
@@ -69,7 +69,7 @@ export default function TableComponent({
                 title={e.specializations.map((e, index) => (
                   <Fragment key={index}>
                     <span>{e}</span>
-                    {index ? ", " : ""}
+                    {index < 2 ? ", " : ""}
                   </Fragment>
                 ))}
                 disableHoverListener={e.specializations.length < 4}
@@ -80,19 +80,25 @@ export default function TableComponent({
                   className="table_info--specializations"
                   onClick={() => openSideBarRight(e.therapistId)}
                 >
-                  {getSpecializationsView(e.specializations)}
+                  {e.specializations.length !== 0 ? (
+                    getSpecializationsView(e.specializations)
+                  ) : (
+                    <span>Brak danych</span>
+                  )}
                 </div>
               </Tooltip>
             </div>
           );
         })}
-        <Pagination
-          count={numberOfPage}
-          page={pageIndex + 1}
-          onChange={(_, page) => setPageIndex(page - 1)}
-          variant="outlined"
-          shape="rounded"
-        />
+        <div className="table_info--pagination">
+          <Pagination
+            count={numberOfPage}
+            page={pageIndex + 1}
+            onChange={(_, page) => setPageIndex(page - 1)}
+            variant="outlined"
+            shape="rounded"
+          />
+        </div>
       </div>
     </div>
   );

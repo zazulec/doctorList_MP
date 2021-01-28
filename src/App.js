@@ -22,13 +22,6 @@ function App() {
     setToggleMainModal(false)
   )
 
-  
-  const closeAllModals = (e) => {
-    if (e.target.id === "outside") {
-      return ;
-    } 
-  };
-
   useEffect(() => {
     dispatch(fetchTherapistsData());
   }, [dispatch]);

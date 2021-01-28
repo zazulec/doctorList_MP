@@ -24,21 +24,14 @@ export default function TableComponent({
   );
 
   const getSpecializationsView = (specializations) => {
-    const isExtended = specializations.length >= 3;
+    const isExtended = specializations.length > 3;
     const dots = isExtended ? <span>...</span> : null;
     return (
       <>
-        {isExtended === true
-          ? specializations.slice(0, 3).map((e, index) => (
+        {specializations.slice(0, 3).map((e, index) => (
               <Fragment key={index}>
                 <span>{e}</span>
-                {index !== specializations.length - 1 ? ", " : ""}
-              </Fragment>
-            ))
-          : specializations.map((e, index) => (
-              <Fragment key={index}>
-                <span>{e}</span>
-                {index !== specializations.length - 1 ? ", " : ""}
+                {index < 2 ? ", " : ""}
               </Fragment>
             ))}
         {dots}
@@ -79,6 +72,7 @@ export default function TableComponent({
                     {index ? ", " : ""}
                   </Fragment>
                 ))}
+                disableHoverListener={e.specializations.length < 4}
                 arrow
                 placement="top"
               >
@@ -94,8 +88,8 @@ export default function TableComponent({
         })}
         <Pagination
           count={numberOfPage}
-          page={pageIndex +1 }
-          onChange={(_,page) => setPageIndex(page - 1)}
+          page={pageIndex + 1}
+          onChange={(_, page) => setPageIndex(page - 1)}
           variant="outlined"
           shape="rounded"
         />

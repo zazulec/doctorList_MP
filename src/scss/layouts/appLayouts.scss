@@ -2,6 +2,9 @@
 
 .appLayout {
   position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
   &_navBar {
     display: flex;
     align-items: center;

@@ -1,11 +1,11 @@
 @import '../styles';
 
 .appOverlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     z-index: 50;
-    background-color: $appOverlayColor;
+    background-color: #25282b95;
 }

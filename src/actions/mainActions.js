@@ -20,7 +20,7 @@ export const fetchTherapistsData = () => {
 };
 export const fetchSingleTherapistData = (id) => {
   return (dispatch) => {
-    fetch(`${config.allTherapistsData}/${177}`, {
+    fetch(`${config.allTherapistsData}/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -41,4 +41,8 @@ export const saveEditedTherapistInfo = (fullName, aboutMe) => {
 
 export const deleteTherapistData = (id) => {
   return (dispatch) => dispatch({ type: "DELETE_THERAPIST_DATA", data: id });
+};
+
+export const eraseTherapistInfo = () => {
+  return (dispatch) => dispatch({ type: "ERASE_THERAPIST_INFO" });
 };

@@ -1,7 +1,6 @@
 const initState = {
   allTherapists: null,
-  // singleTherapist: null
-  singleTherapist: { specializations: [], therapyTypes: [], certificates: [] },
+  singleTherapist: null
 };
 
 const mainReducer = (state = initState, action) => {
@@ -48,6 +47,12 @@ const mainReducer = (state = initState, action) => {
       //   ...state,
       //   singleTherapist: action.data,
       // };
+      break;
+    case "ERASE_THERAPIST_INFO":
+      newState = {
+        ...state,
+        singleTherapist: null,
+      };
       break;
     default:
       return state;

@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/doctorList_MP/static/css/main.039409bf.chunk.css",
-    "main.js": "/doctorList_MP/static/js/main.bf712bdc.chunk.js",
-    "main.js.map": "/doctorList_MP/static/js/main.bf712bdc.chunk.js.map",
+    "main.js": "/doctorList_MP/static/js/main.4aff43cc.chunk.js",
+    "main.js.map": "/doctorList_MP/static/js/main.4aff43cc.chunk.js.map",
     "runtime-main.js": "/doctorList_MP/static/js/runtime-main.fa731f2b.js",
     "runtime-main.js.map": "/doctorList_MP/static/js/runtime-main.fa731f2b.js.map",
     "static/js/2.bfb156e7.chunk.js": "/doctorList_MP/static/js/2.bfb156e7.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.fa731f2b.js",
     "static/js/2.bfb156e7.chunk.js",
     "static/css/main.039409bf.chunk.css",
-    "static/js/main.bf712bdc.chunk.js"
+    "static/js/main.4aff43cc.chunk.js"
   ]
 }

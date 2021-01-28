@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import AppLayout from "./components/layouts/AppLayout";
 import TableComponent from "./components/table/Table";
+import AppOverlay from "./components/layouts/AppOverlay";
+import SideBarRight from "./components/sideBarRight/SideBarRight";
+import { MainModal } from "./components/mainModal/MainModal";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTherapistsData } from "./actions/mainActions";
-import AppOverlay from "./components/layouts/AppOverlay";
-import SideBarRight from "./components/sideBarRight/SideBarRight";
 
 function App() {
-  const [toggleAppOverlay, setToggleAppOverlay] = useState(true);
+  const [toggleAppOverlay, setToggleAppOverlay] = useState(false);
+  const [toggleSideBarRight, setToggleSideBarRight] = useState(false);
+  const [toggleMainModal, setToggleMainModal] = useState(false);
   const allTherapist = useSelector((state) => state.main.allTherapists);
   const dispatch = useDispatch();
 
@@ -17,11 +20,17 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      {!toggleAppOverlay ? null : (
+      {toggleAppOverlay === false ? null : (
         <AppOverlay>
-          <SideBarRight
-            setToggleAppOverlay={setToggleAppOverlay}
-          ></SideBarRight>
+          {toggleMainModal === false ? null : (
+            <MainModal setToggleMainModal={setToggleMainModal} />
+          )}
+          {toggleSideBarRight === false ? null : (
+            <SideBarRight
+              setToggleAppOverlay={setToggleAppOverlay}
+              setToggleMainModal={setToggleMainModal}
+            ></SideBarRight>
+          )}
         </AppOverlay>
       )}
       <AppLayout>
@@ -35,7 +44,10 @@ function App() {
             }}
           ></div>
         ) : (
-          <TableComponent />
+          <TableComponent
+            setToggleSideBarRight={setToggleSideBarRight}
+            setToggleAppOverlay={setToggleAppOverlay}
+          />
         )}
       </AppLayout>
     </>

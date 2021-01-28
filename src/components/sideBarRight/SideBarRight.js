@@ -4,11 +4,19 @@ import { CustomInput } from "../customInput/CustomInput";
 import { CustomTextArea } from "../customTextArea/CustomTextArea";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleTherapistData, saveEditedTherapistInfo } from "../../actions/mainActions";
+import {
+  fetchSingleTherapistData,
+  saveEditedTherapistInfo,
+} from "../../actions/mainActions";
 import CustomButton from "../customButton/CustomButton";
 import closeButton from "../../assets/images/close_24px.svg";
 
-export default function SideBarRight({ therapistId, setToggleAppOverlay }) {
+export default function SideBarRight({
+  therapistId,
+  setToggleAppOverlay,
+  setToggleMainModal,
+  setToggleSideBarRight
+}) {
   const singleTherapist = useSelector((state) => state.main.singleTherapist);
   const dispatch = useDispatch();
   const [fullName, setFullName] = useState(null);
@@ -20,19 +28,25 @@ export default function SideBarRight({ therapistId, setToggleAppOverlay }) {
       dispatch(fetchSingleTherapistData());
     }
     if (singleTherapist !== null) {
-        setFullName(singleTherapist.fullName)
-        setAboutMe(singleTherapist.aboutMe)
-      }
+      setFullName(singleTherapist.fullName);
+      setAboutMe(singleTherapist.aboutMe);
+    }
   }, [dispatch, singleTherapist]);
 
-  const saveTherapistData = (fullName, aboutMe) => (
-    setIsEdited((prevState) => !prevState),
-    dispatch(saveEditedTherapistInfo(fullName, aboutMe)),
-    alert("react.toastify... 'Zapisano Dane' :)")
+  const saveTherapistData = (fullName, aboutMe) => {
+    return (
+      setIsEdited((prevState) => !prevState),
+      dispatch(saveEditedTherapistInfo(fullName, aboutMe)),
+      alert("react.toastify... 'Zapisano Dane' :)")
+    );
+  };
 
-  )
-
-  
+  const deleteSingleTherapist = () => {
+    return (
+      setToggleAppOverlay(true), 
+      setToggleMainModal(true)
+    );
+  };
 
   return (
     <div className="sideBarRight">
@@ -120,9 +134,7 @@ export default function SideBarRight({ therapistId, setToggleAppOverlay }) {
                   <CustomButton
                     role="withBorderError"
                     title="Usuń"
-                    onClick={() =>
-                      alert("wyskakujący modal czy napewno chcesz usunąć usera")
-                    }
+                    onClick={() => deleteSingleTherapist()}
                   ></CustomButton>
                 </div>
               </>

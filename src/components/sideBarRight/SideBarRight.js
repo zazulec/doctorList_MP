@@ -37,7 +37,7 @@ export default function SideBarRight({
         dispatch(eraseTherapistInfo());
       }
     };
-  }, [dispatch, singleTherapist]);
+  }, [dispatch, singleTherapist, singleTherapistId]);
 
   const saveTherapistData = (fullName, aboutMe, singleTherapistId) => {
     return (

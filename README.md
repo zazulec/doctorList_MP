@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# To view the application on the web, go to this page. 
+[@doctorList_MP](https://zazulec.github.io/doctorList_MP/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# doctorList_MP - online CRM
+Simple application that downloads therapists' data and displays them in a table
 
-## Available Scripts
+## Table of contents
+* [General info](#general-info)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Status](#status)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
 
-In the project directory, you can run:
+## General info
+The project was created for the purposes of recruitment. My task was to create a frontend layer with the appropriate requirements.
 
-### `npm start`
+The application allows the user to:
+* viewing therapists data,
+* editing their data,
+* deleting therapist data.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Main Page
+<img width="1201" alt="Zrzut ekranu 2021-01-29 o 00 27 23" src="https://user-images.githubusercontent.com/60104519/106211444-1abf5680-61c9-11eb-9232-4a5cde62d2d0.png">
 
-### `npm test`
+Displaying therapist data
+<img width="1200" alt="Zrzut ekranu 2021-01-29 o 00 27 55" src="https://user-images.githubusercontent.com/60104519/106211508-3cb8d900-61c9-11eb-969d-f8d4473d4929.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Editing therapist data
+<img width="1201" alt="Zrzut ekranu 2021-01-29 o 00 28 08" src="https://user-images.githubusercontent.com/60104519/106211559-4b9f8b80-61c9-11eb-8143-da5ef94e266e.png">
 
-### `npm run build`
+View of deleting therapist data
+<img width="1203" alt="Zrzut ekranu 2021-01-29 o 00 28 33" src="https://user-images.githubusercontent.com/60104519/106211747-8275a180-61c9-11eb-85df-199dadf2c4ca.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
+### Front
+* TypeScript - version 3.9.3
+* ReactJS - version 17.0.1
+* React-Redux - version 7.2.2
+* Redux-thunk - version 2.3.0
+* Redux-logger - version 3.0.6
+* Material-UI - version 4.11.1
+* Scss - version 4.14.1
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup
+To run the application locally first of all ypu need to use any IDE(Visual Studio Code). Next step , you must turn on frontend application. Below are the installation instructions.
 
-### `npm run eject`
+Frontend application start.
+Type in terminal:
+```bash
+cd front
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Status
+Project is: _finished_. The application meets all the assumptions of the project, so at the moment I do not plan to develop it further. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Inspiration
+Project created for recruitment purposes. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+Front-End part created by Paweł Zarzycki / pawelzarzyckimail@gmail.com - feel free to contact me!

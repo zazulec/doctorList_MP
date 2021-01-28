@@ -61,7 +61,7 @@ export default function TableComponent({
             <div key={i} className="table">
               <div className="table_info">
                 <div className="table_info--avatar">
-                  <img src={e.avatarUrl} />
+                  <img src={e.avatarUrl} alt="avatar" />
                 </div>
                 <div className="table_info--name">{e.fullName}</div>
               </div>

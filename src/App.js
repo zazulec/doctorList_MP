@@ -16,6 +16,19 @@ function App() {
   const allTherapist = useSelector((state) => state.main.allTherapists);
   const dispatch = useDispatch();
 
+  const closeModals = () => (
+    setToggleAppOverlay(false),
+    setToggleSideBarRight(false),
+    setToggleMainModal(false)
+  )
+
+  
+  const closeAllModals = (e) => {
+    if (e.target.id === "outside") {
+      return ;
+    } 
+  };
+
   useEffect(() => {
     dispatch(fetchTherapistsData());
   }, [dispatch]);
@@ -23,7 +36,7 @@ function App() {
   return (
     <>
       {toggleAppOverlay === false ? null : (
-        <AppOverlay>
+        <AppOverlay closeModals={closeModals}>
           {toggleMainModal === false ? null : (
             <MainModal
               setToggleMainModal={setToggleMainModal}

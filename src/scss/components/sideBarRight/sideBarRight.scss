@@ -31,6 +31,7 @@
   }
   &_contentWrapper {
     padding: 0 32px 32px 32px;
+    overflow: auto;
     & h5 {
       font-family: Inter;
       font-style: normal;

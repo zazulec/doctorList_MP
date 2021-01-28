@@ -2,8 +2,8 @@ import React from "react";
 import "../../scss/components/mainModal/mainModal.scss";
 import CustomButton from "../customButton/CustomButton";
 
-import { deleteTherapistData } from "../../actions/mainActions";
 import { useDispatch } from "react-redux";
+import { deleteTherapistData } from "../../actions/mainActions";
 
 export function MainModal({
   setToggleMainModal,

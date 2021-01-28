@@ -8,9 +8,9 @@ import { useSelector } from "react-redux";
 export default function TableComponent({
   setToggleSideBarRight,
   setToggleAppOverlay,
-  setSingleTherapistId
+  setSingleTherapistId,
 }) {
-  const [pageIndex, setPageIndex] = useState(7);
+  const [pageIndex, setPageIndex] = useState(0);
   const currentTherapistView = useSelector((state) => {
     const startIndex = pageIndex * 10;
     const endIndex = startIndex + 10;
@@ -46,34 +46,8 @@ export default function TableComponent({
     );
   };
 
-  //   const getSpecializationsView =  useCallback(
-  //     (specializations) => {
-  //        const isExtended = specializations.length >= 3;
-  //        const dots = isExtended ? <span>...</span> : null;
-  //        return (
-  //          <Fragment>
-  //            {isExtended === true
-  //              ? specializations.slice(0, 3).map((e, index) => (
-  //                  <Fragment key={index}>
-  //                    <span>{e}</span>
-  //                    {index !== specializations.length - 1 ? ", " : ""}
-  //                  </Fragment>
-  //                ))
-  //              : specializations.map((e, index) => (
-  //                  <Fragment key={index}>
-  //                    <span >{e}</span>
-  //                    {index !== specializations.length - 1 ? ", " : ""}
-  //                  </Fragment>
-  //                ))}
-  //            {dots}
-  //          </Fragment>
-  //        );
-  //      }
-  //    ),
-  //    [input],
-  //  )
   const openSideBarRight = (therapistId) => {
-    setSingleTherapistId(therapistId)
+    setSingleTherapistId(therapistId);
     setToggleAppOverlay(true);
     setToggleSideBarRight(true);
   };
@@ -82,9 +56,11 @@ export default function TableComponent({
     <div className="tableComponent">
       <div className="tableComponent_wrapper">
         <div className="tableComponent_header">
-          <div className="tableComponent_header--specialist">Specjalista</div>
+          <div className="tableComponent_header--specialist">
+            <span>Specjalista</span>
+          </div>
           <div className="tableComponent_header--specialization">
-            Specjalizacja
+            <span>Specjalizacje</span>
           </div>
         </div>
         {currentTherapistView.map((e, i) => {
@@ -92,7 +68,7 @@ export default function TableComponent({
             <div key={i} className="table">
               <div className="table_info">
                 <div className="table_info--avatar">
-                  <img src={e.avatarUrl} alt="therapistAvatar" />
+                  <img src={e.avatarUrl} />
                 </div>
                 <div className="table_info--name">{e.fullName}</div>
               </div>
@@ -106,7 +82,10 @@ export default function TableComponent({
                 arrow
                 placement="top"
               >
-                <div className="table_info--specializations" onClick={() => openSideBarRight(e.therapistId)}>
+                <div
+                  className="table_info--specializations"
+                  onClick={() => openSideBarRight(e.therapistId)}
+                >
                   {getSpecializationsView(e.specializations)}
                 </div>
               </Tooltip>
@@ -115,8 +94,8 @@ export default function TableComponent({
         })}
         <Pagination
           count={numberOfPage}
-          page={pageIndex + 1}
-          onChange={() => setPageIndex()}
+          page={pageIndex +1 }
+          onChange={(_,page) => setPageIndex(page - 1)}
           variant="outlined"
           shape="rounded"
         />

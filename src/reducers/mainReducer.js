@@ -19,11 +19,22 @@ const mainReducer = (state = initState, action) => {
       };
       break;
     case "SAVE_EDITED_THERAPIST_INFO":
-      let { fullName, aboutMe } = action.data;
-      // newState = {
-      //   ...state,
-      //   singleTherapist: action.data,
-      // };
+      let { fullName, aboutMe, singleTherapistId } = action.data;
+      const findTherapistToUpdate = state.allTherapists.findIndex(
+        (e) => e.therapistId === singleTherapistId
+      );
+
+      let newAllTherapists = [...state.allTherapists];
+
+      let updatedTherapistData = state.allTherapists[findTherapistToUpdate];
+      updatedTherapistData.aboutMe = aboutMe;
+      updatedTherapistData.fullName = fullName;
+      newAllTherapists[findTherapistToUpdate] = updatedTherapistData;
+
+      newState = {
+        ...state,
+        newAllTherapists: newAllTherapists,
+      };
       break;
     case "DELETE_THERAPIST_DATA":
       const findTherapistDataToRemove = state.allTherapists.findIndex(
@@ -35,7 +46,7 @@ const mainReducer = (state = initState, action) => {
           newAllTherapists.splice(findTherapistDataToRemove, 1);
           return newAllTherapists;
         } else {
-          return state.allTherapists;
+          return state.newAllTherapists;
         }
       }
       const newAllItemsData = deleteDataInArrayWhenFindIndexInAllTherapist();

@@ -1,11 +1,15 @@
 import React from "react";
 import "../../scss/components/customInput/customInput.scss";
 
-export const CustomInput = ({ labelText, value }) => {
+export const CustomInput = ({ labelText, data, handleInput }) => {
   return (
     <div className="customInput">
       <label>{labelText}</label>
-      <input value={value} type="text" />
+      <input
+        defaultValue={data}
+        type="text"
+        onChange={(e) => handleInput(e.target.value)}
+      />
     </div>
   );
 };

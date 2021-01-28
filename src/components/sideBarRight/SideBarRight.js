@@ -20,18 +20,26 @@ export default function SideBarRight({
 }) {
   const singleTherapist = useSelector((state) => state.main.singleTherapist);
   const dispatch = useDispatch();
-  const [fullName, setFullName] = useState(null);
-  const [aboutMe, setAboutMe] = useState(null);
+  const [fullName, setFullName] = useState(
+    singleTherapist && singleTherapist.fullName
+  );
+  const [aboutMe, setAboutMe] = useState(
+    singleTherapist && singleTherapist.aboutMe
+  );
   const [isEdited, setIsEdited] = useState(true);
 
   useEffect(() => {
     if (singleTherapist === null) {
       dispatch(fetchSingleTherapistData(singleTherapistId));
     }
-    if (singleTherapist !== null) {
-      setFullName(singleTherapist.fullName);
-      setAboutMe(singleTherapist.aboutMe);
-    }
+    // if (singleTherapistBackend !== null && fullName === "") {
+    //   setFullName(singleTherapistBackend.fullName);
+    //   setAboutMe(singleTherapistBackend.aboutMe);
+    // } else {
+    //   setFullName(fullName);
+    //   setAboutMe(aboutMe);
+    // }
+
     return () => {
       if (singleTherapist !== null) {
         dispatch(eraseTherapistInfo());
@@ -39,14 +47,15 @@ export default function SideBarRight({
     };
   }, [dispatch, singleTherapist]);
 
-  const saveTherapistData = (fullName, aboutMe) => {
+  const saveTherapistData = (fullName, aboutMe, singleTherapistId) => {
     return (
       setIsEdited((prevState) => !prevState),
-      dispatch(saveEditedTherapistInfo(fullName, aboutMe)),
+      dispatch(saveEditedTherapistInfo(fullName, aboutMe, singleTherapistId)),
+      setToggleAppOverlay(false),
+      setToggleSideBarRight(false),
       alert("react.toastify... 'Zapisano Dane' :)")
     );
   };
-
   const deleteSingleTherapist = () => {
     return (
       setToggleAppOverlay(true),
@@ -54,6 +63,9 @@ export default function SideBarRight({
       setToggleMainModal(true)
     );
   };
+
+  const handleInput = (name) => setFullName(name);
+  const handleTextArea = (therapistInfo) => setAboutMe(therapistInfo);
 
   return (
     <div className="sideBarRight">
@@ -148,13 +160,23 @@ export default function SideBarRight({
             ) : (
               <>
                 <h5>Edytuj informacje o specjaliście</h5>
-                <CustomInput labelText="Imię i nazwisko" value={fullName} />
-                <CustomTextArea labelText="O mnie" value={aboutMe} />
+                <CustomInput
+                  labelText="Imię i nazwisko"
+                  data={singleTherapist.fullName}
+                  handleInput={handleInput}
+                />
+                <CustomTextArea
+                  labelText="O mnie"
+                  data={singleTherapist.aboutMe}
+                  handleTextArea={handleTextArea}
+                />
                 <div className="sideBarRight_buttonsContainer">
                   <CustomButton
                     role="confirmButton"
                     title="Zapisz"
-                    onClick={() => saveTherapistData(fullName, aboutMe)}
+                    onClick={() =>
+                      saveTherapistData(fullName, aboutMe, singleTherapistId)
+                    }
                   ></CustomButton>
                   <CustomButton
                     role="withBorder"

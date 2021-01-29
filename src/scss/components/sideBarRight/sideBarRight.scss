@@ -32,6 +32,8 @@
   &_contentWrapper {
     padding: 0 32px 32px 32px;
     overflow-x: scroll;
+    display: flex;
+    flex-direction: column;
     cursor: auto;
     & h5 {
       font-family: Inter;
@@ -40,6 +42,12 @@
       font-size: 20px;
       line-height: 26px;
       letter-spacing: 0.2px;
+      margin: 10px 0 15px 0 ;
+    }
+    &--overflowSection {
+      width: 80%;
+      overflow-y: scroll;
+      cursor: all-scroll;
     }
     &--label {
       font-family: Inter;

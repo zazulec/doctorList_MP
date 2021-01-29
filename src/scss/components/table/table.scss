@@ -53,9 +53,8 @@
         display: flex;
         flex-direction: row;
         width: 325px;
-        height: 60px;
+        height: 56px;
         border: 1px $tableBorderColor solid;
-        overflow-y: scroll;
         flex-shrink: 0;
         &--avatar {
           display: flex;
@@ -82,7 +81,7 @@
         }
         &--specializations {
           width: 100%;
-          height: 60px;
+          height: 56px;
           border: 1px #dbdde0 solid;
           cursor: pointer;
           display: flex;

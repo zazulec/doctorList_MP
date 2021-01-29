@@ -10,11 +10,12 @@
     align-items: center;
     justify-content: flex-start;
     height: 64px;
-    width: 100vw;
+    width: 95vw;
     left: 0px;
     top: 0px;
     border: 1px #e8e8e8 solid;
     background-color: $white;
+    overflow-y: hidden;
     & h5 {
       height: 26px;
       width: 210px;

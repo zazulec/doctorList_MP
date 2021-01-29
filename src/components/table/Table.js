@@ -31,7 +31,7 @@ export default function TableComponent({
         {specializations.slice(0, 3).map((e, index) => (
           <Fragment key={index}>
             <span>{e}</span>
-            {index < 2 ? ", " : ""}
+            {index < 2 && specializations.length !== 1 ? ", " : ""}
           </Fragment>
         ))}
         {dots}
@@ -69,7 +69,7 @@ export default function TableComponent({
                 title={e.specializations.map((e, index) => (
                   <Fragment key={index}>
                     <span>{e}</span>
-                    {index < 2 ? ", " : ""}
+                    {index < 2 && e.length !== 1 ? ", " : ""}
                   </Fragment>
                 ))}
                 disableHoverListener={e.specializations.length < 4}

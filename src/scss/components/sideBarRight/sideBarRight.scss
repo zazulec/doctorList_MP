@@ -31,7 +31,7 @@
   }
   &_contentWrapper {
     padding: 0 32px 32px 32px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     cursor: auto;

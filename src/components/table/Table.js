@@ -31,7 +31,7 @@ export default function TableComponent({
         {specializations.slice(0, 3).map((e, index) => (
           <Fragment key={index}>
             <span>{e}</span>
-            {index < 2 && specializations.length !== 1 ? ", " : ""}
+            {index < 2 && index !== specializations.length - 1 ? `, \u{200c}` : ""}
           </Fragment>
         ))}
         {dots}
@@ -68,10 +68,13 @@ export default function TableComponent({
                 }`}</div>
               </div>
               <Tooltip
-                title={e.specializations.map((e, index) => (
+                title={e.specializations.map((item, index) => (
+                  
                   <Fragment key={index}>
-                    <span>{e}</span>
-                    {index < 2 && e.length !== 1 ? ", " : ""}
+                    <span>{item}</span>
+                    {index < e.specializations.length - 1
+                      ? ", "
+                      : ""}
                   </Fragment>
                 ))}
                 disableHoverListener={e.specializations.length < 4}

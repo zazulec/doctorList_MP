@@ -66,13 +66,17 @@
           }
         }
         &--name {
-          padding: 17px 0 17px 24px;
+          display: flex;
+          padding-left: 21px;
+          align-items: center;
+          justify-content: center;
           font-family: Inter;
           font-style: normal;
           font-weight: normal;
           font-size: 14px;
           line-height: 22px;
           letter-spacing: 0.1px;
+          text-overflow: ellipsis;
         }
         &--specializations {
           width: 100%;
@@ -83,7 +87,7 @@
           align-items: center;
           padding-left: 50px;
           flex-wrap: nowrap;
-          overflow-y: auto;
+          overflow-y: scroll;
           border-right: 2px;
           & span {
             font-family: Inter;

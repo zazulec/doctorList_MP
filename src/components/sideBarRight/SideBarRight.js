@@ -72,74 +72,76 @@ export default function SideBarRight({
             {isEdited ? (
               <>
                 <h5>Informacje o specjaliście</h5>
-                <p>
-                  <label className="sideBarRight_contentWrapper--label">
-                    Imię i nazwisko
-                  </label>
-                  <span className="sideBarRight_contentWrapper--info">
-                    {fullName || "Brak danych"}
-                  </span>
-                </p>
-                <p>
-                  <label className="sideBarRight_contentWrapper--label">
-                    Specjalizacje
-                  </label>
-                  <span className="sideBarRight_contentWrapper--info">
-                    {singleTherapist.specializations.length !== 0
-                      ? singleTherapist.specializations.map((e, index) => (
-                          <span
-                            key={index}
-                            className="sideBarRight_contentWrapper--info--specializations"
-                          >{`${e} ${
-                            index < singleTherapist.specializations.length - 1
-                              ? ",\u00A0"
-                              : ""
-                          }`}</span>
-                        ))
-                      : "Brak danych"}
-                  </span>
-                </p>
-                <p>
-                  <label className="sideBarRight_contentWrapper--label">
-                    Rodzaje terapii
-                  </label>
-                  <span className="sideBarRight_contentWrapper--info">
-                    {singleTherapist.therapyTypes.length !== 0
-                      ? singleTherapist.therapyTypes.map((e, index) => (
-                          <span
-                            key={index}
-                            className="sideBarRight_info--specializations"
-                          >{`${e} ${
-                            index < singleTherapist.therapyTypes.length - 1
-                              ? ",\u00A0"
-                              : ""
-                          }`}</span>
-                        ))
-                      : "Brak danych"}
-                  </span>
-                </p>
-                <article>
-                  <label className="sideBarRight_contentWrapper--label">
-                    Rodzaje Certyfikatów
-                  </label>
-                  <span className="sideBarRight_contentWrapper--info">
-                    <ul>
-                      {singleTherapist.certificates.length !== 0
-                        ? singleTherapist.certificates.map((e, index) => (
-                            <li key={index}>{e.name}</li>
+                <section className="sideBarRight_contentWrapper--overflowSection">
+                  <p>
+                    <label className="sideBarRight_contentWrapper--label">
+                      Imię i nazwisko
+                    </label>
+                    <span className="sideBarRight_contentWrapper--info">
+                      {fullName || "Brak danych"}
+                    </span>
+                  </p>
+                  <p>
+                    <label className="sideBarRight_contentWrapper--label">
+                      Specjalizacje
+                    </label>
+                    <span className="sideBarRight_contentWrapper--info">
+                      {singleTherapist.specializations.length !== 0
+                        ? singleTherapist.specializations.map((e, index) => (
+                            <span
+                              key={index}
+                              className="sideBarRight_contentWrapper--info--specializations"
+                            >{`${e} ${
+                              index < singleTherapist.specializations.length - 1
+                                ? ",\u00A0"
+                                : ""
+                            }`}</span>
                           ))
                         : "Brak danych"}
-                    </ul>
-                  </span>
-                </article>
-                <p>
-                  <label className="sideBarRight_contentWrapper--label">
-                    O mnie
-                  </label>
-                  <span className="sideBarRight_contentWrapper--info">
-                    {aboutMe || "Brak danych"}
-                  </span>
-                </p>
+                    </span>
+                  </p>
+                  <p>
+                    <label className="sideBarRight_contentWrapper--label">
+                      Rodzaje terapii
+                    </label>
+                    <span className="sideBarRight_contentWrapper--info">
+                      {singleTherapist.therapyTypes.length !== 0
+                        ? singleTherapist.therapyTypes.map((e, index) => (
+                            <span
+                              key={index}
+                              className="sideBarRight_info--specializations"
+                            >{`${e} ${
+                              index < singleTherapist.therapyTypes.length - 1
+                                ? ",\u00A0"
+                                : ""
+                            }`}</span>
+                          ))
+                        : "Brak danych"}
+                    </span>
+                  </p>
+                  <article>
+                    <label className="sideBarRight_contentWrapper--label">
+                      Rodzaje Certyfikatów
+                    </label>
+                    <span className="sideBarRight_contentWrapper--info">
+                      <ul>
+                        {singleTherapist.certificates.length !== 0
+                          ? singleTherapist.certificates.map((e, index) => (
+                              <li key={index}>{e.name}</li>
+                            ))
+                          : "Brak danych"}
+                      </ul>
+                    </span>
+                  </article>
+                  <p>
+                    <label className="sideBarRight_contentWrapper--label">
+                      O mnie
+                    </label>
+                    <span className="sideBarRight_contentWrapper--info">
+                      {aboutMe || "Brak danych"}
+                    </span>
+                  </p>
+                </section>
                 <div className="sideBarRight_contentWrapper--buttonsContainer">
                   <CustomButton
                     role="withBorder"

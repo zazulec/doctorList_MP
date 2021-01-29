@@ -61,9 +61,11 @@ export default function TableComponent({
             <div key={i} className="table">
               <div className="table_info">
                 <div className="table_info--avatar">
-                  <img src={e.avatarUrl}  />
+                  <img src={e.avatarUrl} />
                 </div>
-                <div className="table_info--name">{e.fullName}</div>
+                <div className="table_info--name">{`${
+                  e.fullName.length > 20 ? e.fullName + "..." : e.fullName
+                }`}</div>
               </div>
               <Tooltip
                 title={e.specializations.map((e, index) => (
